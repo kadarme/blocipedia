@@ -1,7 +1,7 @@
 require 'faker'
 
 # Create Users
-50.times do
+5.times do
   user = User.new(
     name:       Faker::Name.name,
     email:      Faker::Internet.email,
@@ -41,6 +41,15 @@ premium = User.new(
   )
 premium.skip_confirmation!
 premium.save!
+
+# Create member user
+member = User.new(
+  name:     'Member User',
+  email:    'member@example.com',
+  password: 'helloworld',
+  )
+member.skip_confirmation!
+member.save!
 
 puts 'Seed Finished'
 puts "#{User.count} users created."
