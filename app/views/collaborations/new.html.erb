@@ -2,20 +2,20 @@
 
 <%= form_for [@wiki, @collaboration] do |f| %>
 
-  <% if wiki.errors.any? %>
+  <% if @wiki.errors.any? %>
      <div class="alert alert-danger">
-       <h4>There are <%= pluralize(wiki.errors.count, "error") %>.</h4>
+       <h4>There are <%= pluralize(@wiki.errors.count, "error") %>.</h4>
        <ul>
-         <% wiki.errors.full_messages.each do |msg| %>
+         <% @wiki.errors.full_messages.each do |msg| %>
            <li><%= msg %></li>
          <% end %>
        </ul>
      </div>
   <% end %>
 
-  <%= form_group_tag(wiki.errors[:user]) do %>
+  <%= form_group_tag(@wiki.errors[:user]) do %>
     <%= f.label :user %>
-
+    <%= f.select :user_id, options_from_collection_for_select(User.all, "id", "name") %>
   <% end %>
       
   <div class="form-group">

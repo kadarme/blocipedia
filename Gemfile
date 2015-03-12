@@ -22,6 +22,11 @@ group :development, :test do
   gem 'pry-rails'
 end
 
+group :test do
+  gem 'stripe-ruby-mock'
+  gem 'thin'
+end
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
