@@ -73,3 +73,7 @@ gem 'faker'
 gem 'stripe'
 
 gem 'redcarpet'
+
+gem 'epic-editor-rails'
+
+gem 'will_paginate'

@@ -9,7 +9,7 @@
       <p><%= markdown_to_html @wiki.body %></p>
     </div>
     <div class="col-md-4">
-      <%= link_to "Delete Wiki", @wiki, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this wiki?' } %> 
-      <%= link_to "Add Collaborator", new_wiki_collaboration_path(@wiki), class: 'btn btn-success' %>
+        <%= link_to "Delete Wiki", @wiki, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this wiki?' } %> 
+        <%= link_to "Add Collaborator", new_wiki_collaboration_path(@wiki), class: 'btn btn-success' %>
     </div>
   </div>

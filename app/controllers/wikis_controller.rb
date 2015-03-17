@@ -1,10 +1,13 @@
 class WikisController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
-    @wikis = policy_scope(Wiki)
+    @wikis = policy_scope(Wiki).paginate(page: params[:page], per_page: 10)
   end
 
   def show
     @wiki = Wiki.find(params[:id])
+    @collaboration = @wiki.collaborations.new
     authorize @wiki
   end
 

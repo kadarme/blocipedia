@@ -28,7 +28,7 @@ class ChargesController < ApplicationController
     currency: 'usd'
   )
    
-  current_user.update_attribute(:premium, true)
+   current_user.update_attributes!( role: 'premium' )
    
   flash[:success] = "Thanks for all the money, #{current_user.email}! Feel free to pay me again."
   redirect_to wikis_path # or wherever

@@ -28,7 +28,7 @@ class WikiPolicy < ApplicationPolicy
           end
          end
        end
-       wikis # return the wikis array we've built up
+      wikis # return the wikis array we've built up
      end
   end
       
@@ -37,7 +37,7 @@ class WikiPolicy < ApplicationPolicy
   end
   
   def create?
-    user.present? && user.admin?
+    user.present? 
   end
   
   def edit?

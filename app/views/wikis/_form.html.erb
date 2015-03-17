@@ -15,7 +15,8 @@
   <% end %>
   <%= form_group_tag(wiki.errors[:body]) do %>
     <%= f.label :body %>
-    <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter wiki body" %>
+    <%= f.hidden_field :body, id: "body" %>
+    <div id="epiceditor"></div>
   <% end %>
   <%= form_group_tag(wiki.errors[:private]) do %>
      <%= f.label :private, class: 'checkbox' do %>
@@ -38,3 +39,11 @@
     <% end %>
   </div>
 <% end %>
+
+<script>
+   var editor = new EpicEditor().load();
+   editor.getElement('editor').body.innerHTML = '<%= escape_javascript(@wiki.body) %>';
+   function prep() {
+     $("#body")[0].value = (editor.getElement('editor').body.innerHTML);
+   }
+</script>
