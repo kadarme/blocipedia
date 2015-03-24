@@ -6,9 +6,10 @@ class CollaborationsController < ApplicationController
   
   def create
     @wiki = Wiki.find(params[:wiki_id])
-    @user = User.find(params[:user_id]) 
+    @collaboration = Collaboration.new(collaboration_params)
+    @collaboration.wiki = @wiki
     
-    if @wiki.users << @user
+    if @collaboration.save
       flash[:notice] = "Collaborator was added to this wiki."
       redirect_to @wiki
     else
@@ -29,4 +30,11 @@ class CollaborationsController < ApplicationController
       render :show
     end  
    end
+  
+  private
+  
+  def collaboration_params
+    params.require(:collaboration).permit(:user_id)
+  end
+  
 end

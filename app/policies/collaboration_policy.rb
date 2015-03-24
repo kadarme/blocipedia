@@ -1,9 +1,13 @@
 class CollaborationPolicy < ApplicationPolicy
-  def create?
+    def create?
     user.present? && (record.user == user) && user.role?(:premium)
   end
   
   def new?
+    create?
+  end
+  
+  def destroy?
     create?
   end
   
@@ -12,4 +16,5 @@ class CollaborationPolicy < ApplicationPolicy
       scope
     end
   end
+
 end

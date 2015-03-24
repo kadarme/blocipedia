@@ -28,13 +28,6 @@
         <%= f.password_field :current_password, class: 'form-control', placeholder: "Enter password" %>
         <i>(we need your current password to confirm your changes)</i>
       </div>
-    
-      <br />
-      <div class="form-group">
-        <%= f.label "Upgrade to Premium User" %>
-        <%= f.check_box :premium %>
-      </div>
-      <br />
       <div class="form-group">
         <%= f.submit "Update", class: 'btn btn-success' %>
       </div>

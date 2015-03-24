@@ -27,13 +27,6 @@ class ApplicationController < ActionController::Base
       description: "Premium Membership -#{current_user.name}",
       amount: @amount
        }
-    else
-      @amount = 15_00
-      @stripe_btn_data = {
-      key: "#{ Rails.configuration.stripe[:publishable_key] }",
-      description: "Premium Membership",
-      amount: @amount
-       }
     end
   end
   
