@@ -1,27 +1,14 @@
 class WikiPolicy < ApplicationPolicy
-
   def index?
-     true
+    true
   end
-  
-  def create?
-    user.present? 
-  end
-  
+
   def edit?
-    user.present? && ((record.user == user) || record.users.include?(user) || !record.private || user.admin?)
-  end
-  
-  def update?
-    create?
+    !record.private || user.role == 'admin' || (record.private == true && record.user == user) || record.user == user
   end
   
   def destroy?
-    edit?
-  end
-  
-  def show?
-    !record.private || user.present?
+    record.user == user || user.role == 'admin'
   end
   
   class Scope

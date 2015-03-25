@@ -3,8 +3,8 @@
 <p>Created by: <%= @wiki.user.name %></p>
 <p><% if @wiki.private == true %> 
   Collaborators: 
-  <% @wiki.users.each do |user| %>
-        <%= user.name %>
+  <% @wiki.users.each do |user| %>   
+      <%= user.name %>
   <% end %>
   <% end %>
 </p>
@@ -12,16 +12,17 @@
   <div class="col-md-4">
     <% if policy(@wiki).edit? %>
       <%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-success btn-sm' %>
+    <% elsif @collaboration.wiki == @wiki %>
+      <%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-success btn-sm' %>
     <% end %>
+    
     <% if policy(@wiki).destroy? %>
       <%= link_to "Delete Wiki", @wiki, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Are you sure you want to delete this wiki?' } %> 
     <% end %>
-    <% if current_user.role == 'admin' || (current_user.role == 'premium' && @wiki.private == true && @wiki.user_id == current_user.id) %>
-      <%= link_to "Add Collaborator", new_wiki_collaboration_path(@wiki), class: 'btn btn-info btn-sm' %>
-    <% end %>
- 
-
     
+    <% if (current_user.role == 'admin' && @wiki.private == true) || (current_user.role == 'premium' && @wiki.private == true && @wiki.user_id == current_user.id) %>
+      <%= link_to "Add Collaborator", new_wiki_collaboration_path(@wiki), class: 'btn btn-info btn-sm' %>
+    <% end %>    
   </div>
    
 
