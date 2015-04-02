@@ -1,4 +1,13 @@
+<div class="row">
+  <div class="col-md-8">
+    <h1>Premium Account</h1>
+    <li>As a premium member, you will have access to create an unlimited amount of private wikis. Additionally, for each private wiki you may choose a selection of collaborators from our user list. </li>
+    </br>
+
+
 <%= form_tag charges_path do %>
-   <h4>Click the button!</h4>
+   <h4>Upgrade Today for $15!</h4>
    <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount="<%= @stripe_btn_data[:amount] %>" data-description="<%= @stripe_btn_data[:description] %>" ></script>
 <% end %>
+  </div>
+</div>

@@ -24,6 +24,12 @@ class User < ActiveRecord::Base
  def standard?
    role == :standard
  end
+ 
+  def downgrade
+    self.role = :standard
+    Wiki.where(user_id: id, private: true).destroy_all
+    self.save
+  end
   
  private
   
