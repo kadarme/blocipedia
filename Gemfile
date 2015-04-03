@@ -61,15 +61,11 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'bootstrap-sass'
-
 gem 'devise'
-
 gem 'figaro'
-
 gem 'pundit'
-
 gem 'faker'
-
 gem 'stripe'
-
 gem 'redcarpet'
+gem 'epic-editor-rails'
+gem 'will_paginate'

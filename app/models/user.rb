@@ -2,9 +2,7 @@ class User < ActiveRecord::Base
   enum role: [:standard, :premium, :admin]
   after_initialize :set_default_role
 
-  def set_default_role
-    self.role ||= :standard
-  end
+
   
   has_many :collaborations
   has_many :wikis, through: :collaborations
@@ -26,5 +24,16 @@ class User < ActiveRecord::Base
  def standard?
    role == :standard
  end
+ 
+  def downgrade
+    self.role = :standard
+    Wiki.where(user_id: id, private: true).destroy_all
+    self.save
+  end
   
+ private
+  
+ def set_default_role
+   self.role ||= :standard
+ end
 end

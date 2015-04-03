@@ -1,5 +1,16 @@
 class WikiPolicy < ApplicationPolicy
- 
+  def index?
+    true
+  end
+
+  def edit?
+    !record.private || user.role == 'admin' || (record.private == true && record.user == user) || record.user == user
+  end
+  
+  def destroy?
+    record.user == user || user.role == 'admin'
+  end
+  
   class Scope
     attr_reader :user, :scope
     
@@ -28,27 +39,8 @@ class WikiPolicy < ApplicationPolicy
           end
          end
        end
-       wikis # return the wikis array we've built up
+      wikis # return the wikis array we've built up
      end
   end
-      
-  def index?
-     true
-  end
-  
-  def create?
-    user.present? && user.admin?
-  end
-  
-  def edit?
-  end
-  
-  def update?
-    create?
-  end
-  
-  def show?
-    !record.private || user.present?
-  end
-  
+ 
 end

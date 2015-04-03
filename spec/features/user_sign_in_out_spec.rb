@@ -19,6 +19,7 @@ feature 'User signs in and out' do
     end
     
     expect(page).to have_content('Signed in successfully.')
+    expect(current_path).to eq root_path                        
   end
   
   scenario 'User signs out successfully' do
@@ -42,5 +43,5 @@ feature 'User signs in and out' do
     
     expect(page).to have_content('Signed out successfully.')
   end
-end
   
+end

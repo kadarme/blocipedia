@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    user.present? && (record.user == user || user.admin?)
+    user.present? 
   end
 
   def edit?
@@ -47,7 +47,7 @@ class ApplicationPolicy
     end
 
     def resolve
-      scope.all
+      scope
     end
   end
 end

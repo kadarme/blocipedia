@@ -3,6 +3,6 @@ FactoryGirl.define do
     title "Wiki Title"
     body "Wiki Body"
     private false
-    user nil
+    user 
   end
 end

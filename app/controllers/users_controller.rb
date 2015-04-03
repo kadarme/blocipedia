@@ -17,7 +17,18 @@ class UsersController < ApplicationController
        redirect_to edit_user_registration_path
      end
    end
- 
+  
+  def downgrade
+    @user = current_user
+    @wikis = @user.wikis
+    if current_user.update(role: 'standard')
+      flash[:notice] = "Account downgraded."
+    else  
+      flash[:error] = "There was an error downgrading the account. Please try again."
+    end
+    redirect_to edit_user_registration_path
+  end
+  
    private
  
    def user_params
